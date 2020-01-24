@@ -57,7 +57,7 @@ public class CarTrip {
     public double getAverageSpeed(){
         if (myTime == 0)
             return 0.0;
-        return (myEndOdometer - myStartOdometer)/myGallonsUsed;
+        return (myEndOdometer - myStartOdometer)/myTime;
     }
 
     public double getGasMileage(){
@@ -71,7 +71,7 @@ public class CarTrip {
     }
 
     public String toString(){
-        return "Distance travelled: " + (myEndOdometer-myStartOdometer) + " miles";
+        return "Distance traveled: " + (myEndOdometer-myStartOdometer) + " miles";
     }
 
 }
