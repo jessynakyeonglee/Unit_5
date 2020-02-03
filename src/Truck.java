@@ -35,10 +35,23 @@ public class Truck {
             return false;
     }
     public String drive(double designatedmiles){
+        double usedfuel=0.0;
         if (enoughFuel(designatedmiles)){
-            designatedmiles=mpg*fuel-designatedmiles;
+            odemeter+=designatedmiles;
+            usedfuel=designatedmiles/mpg;
+            fuel-=usedfuel;
+            return "Success";
+        }
+        else
+            return "Truck"+truckID+" does not have enough fuel to drive "+designatedmiles+" miles.";
+    }
 
-
+    public void fill(){
+        fuel+=CAPACITY-fuel;
+    }
+    public String fill(double fuel){
+        if (fuel>CAPACITY){
+            return "Truck"+truckID+": Gallons exceeds tank capacity";
         }
     }
 }
