@@ -6,25 +6,30 @@ public class Truck {
     private static final double CAPACITY=20.0;
     private static double totalFuel=0;
 
-    public Truck (){
-        truckID="";
-        odemeter=0.0;
-        mpg=0.0;
-        fuel=0.0;
+    public Truck (String n){
+        truckID=n;
+    }
+
+    public Truck (String name,double o,double m, double f){
+        truckID=name;
+        odemeter=o;
+        mpg=m;
+        fuel=f;
     }
     public String getTruckID(String t){
         return truckID;
     }
-    public double getOdemeter(double o){
+
+    public double getOdometer(){
         return odemeter;
     }
-    public double getmpg(double m){
+    public double getMpg(){
         return mpg;
     }
-    public double getfuel(double f){
+    public double getFuel(){
         return fuel;
     }
-    public void setmpg(double f){
+    public void setMpg(double f){
         mpg=f;
     }
     public boolean enoughFuel(double designatedmiles){
@@ -43,15 +48,27 @@ public class Truck {
             return "Success";
         }
         else
-            return "Truck"+truckID+" does not have enough fuel to drive "+designatedmiles+" miles.";
+            return "Truck "+truckID+" does not have enough fuel to drive "+designatedmiles+" miles.";
     }
 
     public void fill(){
+        double neededfuel = CAPACITY-fuel;
         fuel+=CAPACITY-fuel;
+        totalFuel+=neededfuel;
+
     }
-    public String fill(double fuel){
-        if (fuel>CAPACITY){
-            return "Truck"+truckID+": Gallons exceeds tank capacity";
+    public String fill(double newfuel){
+        if (newfuel>CAPACITY-fuel){
+            return "Truck "+truckID+": Gallons exceeds tank capacity";
         }
+        else
+        return "Success";
+    }
+    public static double getTotalFuel(){
+        return totalFuel;
+    }
+    public String toString(){
+        return "Truck: "+truckID+"\nOdometer: "+odemeter+"\nMiles Per Gallon: "
+                +mpg+"\nFuel: "+fuel;
     }
 }
