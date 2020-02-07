@@ -13,9 +13,7 @@ public class Account {
         this(dupaccount.first, dupaccount.last,dupaccount.balance);
     }
     public Account(){
-        this.first="";
-        this.last="";
-        this.balance=0.0;
+        this("","",0.0);
     }
     public String getFirst(){
         return first;
